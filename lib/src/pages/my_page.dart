@@ -1,6 +1,8 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_clone_instagram/src/components/avatar_widget.dart';
 import 'package:flutter_clone_instagram/src/components/image_data.dart';
+import 'package:flutter_clone_instagram/src/components/my_post_widget.dart';
 import 'package:flutter_clone_instagram/src/controller/mypage_controller.dart';
 import 'package:get/get.dart';
 
@@ -178,21 +180,21 @@ class MyPage extends GetView<MypageController> {
   }
 
   Widget _tabView() {
-    return GridView.builder(
-        physics: const NeverScrollableScrollPhysics(),
-        shrinkWrap: true,
-        itemCount: 100,
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 3,
-          childAspectRatio: 1,
-          mainAxisSpacing: 1,
-          crossAxisSpacing: 1,
-        ),
-        itemBuilder: (BuildContext context, int index) {
-          return Container(
-            color: Colors.grey,
-          );
-        });
+    return Obx(
+      () => GridView.builder(
+          physics: const NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          itemCount: controller.myPostList.length,
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 3,
+            childAspectRatio: 1,
+            mainAxisSpacing: 1,
+            crossAxisSpacing: 1,
+          ),
+          itemBuilder: (BuildContext context, int index) {
+            return MyPostWidget(post: controller.myPostList[index]);
+          }),
+    );
   }
 
   @override

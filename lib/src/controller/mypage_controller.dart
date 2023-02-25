@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_clone_instagram/src/controller/auth_controller.dart';
 import 'package:flutter_clone_instagram/src/model/instagram_user.dart';
+import 'package:flutter_clone_instagram/src/repository/post_repository.dart';
 import 'package:get/get.dart';
+
+import '../model/post.dart';
 
 class MypageController extends GetxController with GetTickerProviderStateMixin {
   late TabController tabController;
 
   Rx<IUser> targetUser = IUser().obs;
+  RxList<Post> myPostList = <Post>[].obs;
 
   @override
   void onInit() {
@@ -24,8 +28,14 @@ class MypageController extends GetxController with GetTickerProviderStateMixin {
     }
   }
 
+  void setMyPost() async {
+    var myFeedList = await PostRepository.loadFeedList();
+    myPostList.addAll(myFeedList);
+  }
+
   void _loadData() {
     setTargetUser();
+    setMyPost();
 
     // 포스트 리스트 로드
     // 사용자 정보 로드

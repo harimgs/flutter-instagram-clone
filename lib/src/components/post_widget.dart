@@ -3,9 +3,13 @@ import 'package:expandable_text/expandable_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_clone_instagram/src/components/avatar_widget.dart';
 import 'package:flutter_clone_instagram/src/components/image_data.dart';
+import 'package:flutter_clone_instagram/src/model/post.dart';
+
+import 'package:timeago/timeago.dart' as timeago;
 
 class PostWidget extends StatelessWidget {
-  const PostWidget({Key? key}) : super(key: key);
+  final Post post;
+  const PostWidget({Key? key, required this.post}) : super(key: key);
 
   Widget _header() {
     return Padding(
@@ -15,10 +19,9 @@ class PostWidget extends StatelessWidget {
         children: [
           AvatarWidget(
             type: AvatarType.TYPE3,
-            nickname: "@kitty",
+            nickname: post.userInfo!.nickname,
             size: 40,
-            thumbPath:
-                'https://www.warrenphotographic.co.uk/photography/bigs/39665-Ginger-cat-on-orange-background.jpg',
+            thumbPath: post.userInfo!.thumbnail!,
           ),
           GestureDetector(
             onTap: () {},
@@ -33,10 +36,7 @@ class PostWidget extends StatelessWidget {
   }
 
   Widget _image() {
-    return CachedNetworkImage(
-      imageUrl:
-          'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/30th-anniversary-of-apollo-11-landing-on-the-moon-astronaut-news-photo-51098545-1547940625.jpg',
-    );
+    return CachedNetworkImage(imageUrl: post.thumbnail!);
   }
 
   Widget _infoCount() {
@@ -78,16 +78,16 @@ class PostWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          const Text(
-            "좋아요 150",
-            style: TextStyle(fontWeight: FontWeight.bold),
+          Text(
+            "좋아요 ${post.likeCount ?? 0}개",
+            style: const TextStyle(fontWeight: FontWeight.bold),
           ),
           ExpandableText(
-            '컨텐츠 입1231231니다!!\n컨텐츠 입니다!!\n컨텐츠 입니다!!\n컨텐츠 입니다!!\n컨텐츠 입니다!!',
             onPrefixTap: () {
               print('프로필 페이지 이동');
             },
-            prefixText: 'kitty',
+            post.description ?? "",
+            prefixText: post.userInfo!.nickname,
             prefixStyle: const TextStyle(fontWeight: FontWeight.bold),
             expandText: '더보기',
             collapseText: '접기',
@@ -115,11 +115,11 @@ class PostWidget extends StatelessWidget {
   }
 
   Widget _dateAgo() {
-    return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 15.0),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 15.0),
       child: Text(
-        '1일전',
-        style: TextStyle(color: Colors.grey, fontSize: 11),
+        timeago.format(post.createAt!),
+        style: const TextStyle(color: Colors.grey, fontSize: 11),
       ),
     );
   }

@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_clone_instagram/src/components/avatar_widget.dart';
 import 'package:flutter_clone_instagram/src/components/image_data.dart';
 import 'package:flutter_clone_instagram/src/components/post_widget.dart';
+import 'package:flutter_clone_instagram/src/controller/home_contoller.dart';
+import 'package:get/get.dart';
 
-class Home extends StatelessWidget {
+class Home extends GetView<HomeController> {
   const Home({Key? key}) : super(key: key);
 
   Widget _myStory() {
@@ -58,8 +60,11 @@ class Home extends StatelessWidget {
   }
 
   Widget _postList() {
-    return Column(
-      children: List.generate(50, (index) => const PostWidget()).toList(),
+    return Obx(
+      () => Column(
+        children: List.generate(controller.postList.length,
+            (index) => PostWidget(post: controller.postList[index])).toList(),
+      ),
     );
   }
 
@@ -85,11 +90,16 @@ class Home extends StatelessWidget {
           )
         ],
       ),
-      body: ListView(
-        children: [
-          _storyBoardList(),
-          _postList(),
-        ],
+      body: RefreshIndicator(
+        onRefresh: controller.requestNew,
+        edgeOffset: 100,
+        displacement: 0,
+        child: ListView(
+          children: [
+            _storyBoardList(),
+            _postList(),
+          ],
+        ),
       ),
     );
   }
