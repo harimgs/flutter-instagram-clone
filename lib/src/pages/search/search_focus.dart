@@ -25,7 +25,8 @@ class _SearchFocusState extends State<SearchFocus>
       padding: const EdgeInsets.symmetric(vertical: 15.0),
       child: Text(
         menu,
-        style: const TextStyle(fontSize: 15, color: Colors.black),
+        overflow: TextOverflow.ellipsis,
+        style: const TextStyle(fontSize: 14, color: Colors.black),
       ),
     );
   }
@@ -64,6 +65,7 @@ class _SearchFocusState extends State<SearchFocus>
         child: TabBar(
           indicatorColor: Colors.black,
           controller: tabController,
+          labelPadding: const EdgeInsets.symmetric(horizontal: 1),
           tabs: [
             _tabMenuOne('Popular'),
             _tabMenuOne('Account'),

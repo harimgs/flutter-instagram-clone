@@ -33,16 +33,12 @@ class _MyPostPageState extends State<MyPostPage> {
         final appBarHeight =
             MediaQuery.of(context).padding.top + kToolbarHeight;
         final position = itemRenderBox.localToGlobal(Offset(0, -appBarHeight));
-        _controller.animateTo(position.dy,
-            duration: const Duration(microseconds: 1), curve: Curves.easeIn);
-        _controller.addListener(() {
-          setState(() {
-            opacity = 1;
-          });
+        _controller.jumpTo(position.dy);
+        setState(() {
+          opacity = 1;
         });
       });
     }
-    ;
   }
 
   @override

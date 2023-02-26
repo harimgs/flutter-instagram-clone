@@ -19,8 +19,9 @@ class MyPage extends GetView<MypageController> {
       children: [
         Text(
           value.toString(),
+          overflow: TextOverflow.ellipsis,
           style: const TextStyle(
-            fontSize: 20,
+            fontSize: 18,
             color: Colors.black,
             fontWeight: FontWeight.bold,
           ),
@@ -155,7 +156,7 @@ class MyPage extends GetView<MypageController> {
               10,
               (index) => UserCard(
                 userId: "kitty$index",
-                description: "Flowwed by dog$index",
+                description: "Followed by dog$index",
               ),
             ).toList(), // UserCard(user)
           ),
