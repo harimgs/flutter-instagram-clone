@@ -10,28 +10,30 @@ import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:image_picker/image_picker.dart';
 
-class AuthController extends GetxController {
+class AuthController extends GetxController with StateMixin {
   static AuthController get to => Get.find();
 
   Rx<IUser> user = IUser().obs;
 
   static Future<void> signOut({required BuildContext context}) async {
     final GoogleSignIn googleSignIn = GoogleSignIn();
+
     try {
+      Get.deleteAll();
       await googleSignIn.signOut();
       await FirebaseAuth.instance.signOut();
-    } catch (e) {
-      print(e);
-    }
+    } catch (e) {}
   }
 
   Future<IUser?> loginUser(String uid) async {
-    //DB 조회
+    //DB Query
+    change(null, status: RxStatus.loading());
     var userData = await UserRepository.loginUserByUid(uid);
     if (userData != null) {
       user(userData);
       InitBinding.additionalBinding();
     }
+    change(null, status: RxStatus.success());
     return userData;
   }
 
@@ -39,7 +41,7 @@ class AuthController extends GetxController {
     if (thumbnail == null) {
       _submitSignup(signupUser);
     } else {
-      // 확장자 validation needed
+      // fil ext validation needed
 
       var task = uploadXFile(thumbnail,
           '${signupUser.uid}/profile.${thumbnail.path.split('.').last}');

@@ -119,22 +119,12 @@ class Upload extends GetView<UploadController> {
           Row(
             children: [
               Container(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                padding: const EdgeInsets.all(6),
                 decoration: BoxDecoration(
                   color: const Color(0xff808080),
                   borderRadius: BorderRadius.circular(30),
                 ),
-                child: Row(
-                  children: [
-                    ImageData(IconsPath.imageSelectIcon),
-                    const SizedBox(width: 7),
-                    const Text(
-                      "여러 항목 선택",
-                      style: TextStyle(color: Colors.white, fontSize: 14),
-                    )
-                  ],
-                ),
+                child: ImageData(IconsPath.imageSelectIcon),
               ),
               const SizedBox(width: 5),
               Container(

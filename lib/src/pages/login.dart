@@ -27,7 +27,7 @@ class Login extends StatelessWidget {
         elevation: 0,
         centerTitle: true,
         title: const Text(
-          "로그인",
+          "Login",
           style: TextStyle(
             color: Colors.black,
           ),
@@ -36,7 +36,7 @@ class Login extends StatelessWidget {
       body: Center(
         child: ElevatedButton(
           onPressed: signInWithGoogle,
-          child: const Text("구글로그인"),
+          child: const Text("Sign In with Google"),
         ),
       ),
     );

@@ -56,7 +56,7 @@ class UserCard extends StatelessWidget {
                 ),
                 ElevatedButton(
                   onPressed: () {},
-                  child: const Text("팔로우"),
+                  child: const Text("Follow"),
                 ),
               ],
             ),

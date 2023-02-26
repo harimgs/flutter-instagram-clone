@@ -35,19 +35,19 @@ class _SearchFocusState extends State<SearchFocus>
       controller: tabController,
       children: const [
         Center(
-          child: Text("인기페이지"),
+          child: Text("Popular"),
         ),
         Center(
-          child: Text("계정페이지"),
+          child: Text("Account"),
         ),
         Center(
-          child: Text("오디오페이지"),
+          child: Text("Audio"),
         ),
         Center(
-          child: Text("태그페이지"),
+          child: Text("Tag"),
         ),
         Center(
-          child: Text("장소페이지"),
+          child: Text("Place"),
         ),
       ],
     );
@@ -65,11 +65,11 @@ class _SearchFocusState extends State<SearchFocus>
           indicatorColor: Colors.black,
           controller: tabController,
           tabs: [
-            _tabMenuOne('인기'),
-            _tabMenuOne('계정'),
-            _tabMenuOne('오디오'),
-            _tabMenuOne('태그'),
-            _tabMenuOne('장소'),
+            _tabMenuOne('Popular'),
+            _tabMenuOne('Account'),
+            _tabMenuOne('Audio'),
+            _tabMenuOne('Tag'),
+            _tabMenuOne('Place'),
           ],
         ),
       ),
@@ -98,7 +98,7 @@ class _SearchFocusState extends State<SearchFocus>
           child: const TextField(
             decoration: InputDecoration(
               border: InputBorder.none,
-              hintText: "검색",
+              hintText: "Search",
               contentPadding: EdgeInsets.only(left: 15, top: 7, bottom: 7),
               isDense: true,
             ),

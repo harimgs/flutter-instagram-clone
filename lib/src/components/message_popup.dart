@@ -47,14 +47,16 @@ class MessagePopup extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         ElevatedButton(
-                            onPressed: okCallback, child: const Text('확인')),
+                            onPressed: okCallback, child: const Text('OK')),
                         const SizedBox(width: 10),
-                        ElevatedButton(
-                          onPressed: cancelCallback,
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.grey),
-                          child: const Text('취소'),
-                        ),
+                        cancelCallback != null
+                            ? ElevatedButton(
+                                onPressed: cancelCallback,
+                                style: ElevatedButton.styleFrom(
+                                    backgroundColor: Colors.grey),
+                                child: const Text('Cancel'),
+                              )
+                            : Container(),
                       ],
                     )
                   ],

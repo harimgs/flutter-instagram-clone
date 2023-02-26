@@ -13,7 +13,7 @@ import 'package:flutter_clone_instagram/src/utils/data_util.dart';
 import 'package:get/get.dart';
 import 'package:photo_manager/photo_manager.dart';
 import 'package:path/path.dart';
-import 'package:image/image.dart' as imageLib;
+import 'package:image/image.dart' as image_lib;
 import 'package:photofilters/photofilters.dart';
 
 class UploadController extends GetxController {
@@ -60,7 +60,7 @@ class UploadController extends GetxController {
       );
       _loadData();
     } else {
-      // message 권한 요청
+      // message
     }
   }
 
@@ -89,8 +89,8 @@ class UploadController extends GetxController {
     var file = await selectedImage.value.file;
     var fileName = basename(file!.path);
 
-    var image = imageLib.decodeImage(file.readAsBytesSync());
-    image = imageLib.copyResize(image!, width: 600);
+    var image = image_lib.decodeImage(file.readAsBytesSync());
+    image = image_lib.copyResize(image!, width: 600);
     var imagefile = await Navigator.push(
       Get.context!,
       MaterialPageRoute(
@@ -151,8 +151,8 @@ class UploadController extends GetxController {
     showDialog(
       context: Get.context!,
       builder: (context) => MessagePopup(
-        title: '포스트',
-        message: '포스팅이 완료 되었습니다.',
+        title: 'Post',
+        message: 'Post was successful!',
         okCallback: () {
           Get.until((route) => Get.currentRoute == '/');
         },

@@ -27,13 +27,13 @@ class ActiveHistory extends StatelessWidget {
                 ),
                 children: [
                   TextSpan(
-                    text: '님이 회원님의 게시물을 좋아합니다.',
+                    text: 'liked your post.',
                     style: TextStyle(
                       fontWeight: FontWeight.normal,
                     ),
                   ),
                   TextSpan(
-                    text: ' 5 일전',
+                    text: ' 5d',
                     style: TextStyle(
                       fontWeight: FontWeight.normal,
                       fontSize: 13,
@@ -82,7 +82,7 @@ class ActiveHistory extends StatelessWidget {
         elevation: 0,
         centerTitle: true,
         title: const Text(
-          "활동",
+          "Notification",
           style: TextStyle(
             fontSize: 22,
             fontWeight: FontWeight.bold,
@@ -93,9 +93,9 @@ class ActiveHistory extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            _newRecentlyActiveView('오늘'),
-            _newRecentlyActiveView('이번주'),
-            _newRecentlyActiveView('이번달'),
+            _newRecentlyActiveView('Today'),
+            _newRecentlyActiveView('This Week'),
+            _newRecentlyActiveView('This Month'),
           ],
         ),
       ),

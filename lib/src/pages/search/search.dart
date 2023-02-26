@@ -54,7 +54,7 @@ class _SearchState extends State<Search> {
               child: Row(children: const [
                 Icon(Icons.search),
                 Text(
-                  "검색",
+                  "Search",
                   style: TextStyle(
                     fontSize: 15,
                     color: Color(0xff838383),

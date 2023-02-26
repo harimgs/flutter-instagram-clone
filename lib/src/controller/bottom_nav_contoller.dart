@@ -47,14 +47,14 @@ class BottomNavContoller extends GetxController {
       showDialog(
           context: Get.context!,
           builder: (context) => MessagePopup(
-                message: '종료하시겠습니까?',
+                message: 'Do you want to Exit?',
                 okCallback: () {
                   exit(0);
                 },
                 cancelCallback: () {
                   Get.back();
                 },
-                title: '시스템',
+                title: 'System',
               ));
       return true;
     } else {

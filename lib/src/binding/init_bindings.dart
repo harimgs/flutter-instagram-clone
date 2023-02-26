@@ -7,12 +7,12 @@ import 'package:get/get.dart';
 class InitBinding extends Bindings {
   @override
   void dependencies() {
-    Get.put(AuthController(), permanent: true);
     Get.put(BottomNavContoller(), permanent: true);
+    Get.put(AuthController());
   }
 
   static additionalBinding() {
-    Get.put(MypageController(), permanent: true);
-    Get.put(HomeController(), permanent: true);
+    Get.put(MypageController());
+    Get.put(HomeController());
   }
 }

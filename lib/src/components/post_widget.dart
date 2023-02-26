@@ -79,18 +79,18 @@ class PostWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Text(
-            "좋아요 ${post.likeCount ?? 0}개",
+            "${post.likeCount ?? 0} likes",
             style: const TextStyle(fontWeight: FontWeight.bold),
           ),
           ExpandableText(
             onPrefixTap: () {
-              print('프로필 페이지 이동');
+              print('Goto profile page');
             },
             post.description ?? "",
             prefixText: post.userInfo!.nickname,
             prefixStyle: const TextStyle(fontWeight: FontWeight.bold),
-            expandText: '더보기',
-            collapseText: '접기',
+            expandText: 'more',
+            collapseText: 'less',
             maxLines: 3,
             expandOnTextTap: true,
             collapseOnTextTap: true,
@@ -107,7 +107,7 @@ class PostWidget extends StatelessWidget {
       child: const Padding(
         padding: EdgeInsets.symmetric(horizontal: 15.0),
         child: Text(
-          '댓글 199개 모두보기',
+          'View all 199개 comments',
           style: TextStyle(fontSize: 13),
         ),
       ),

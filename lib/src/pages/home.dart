@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_clone_instagram/src/components/avatar_widget.dart';
 import 'package:flutter_clone_instagram/src/components/image_data.dart';
 import 'package:flutter_clone_instagram/src/components/post_widget.dart';
+import 'package:flutter_clone_instagram/src/controller/auth_controller.dart';
 import 'package:flutter_clone_instagram/src/controller/home_contoller.dart';
 import 'package:get/get.dart';
 
@@ -13,8 +14,7 @@ class Home extends GetView<HomeController> {
       children: [
         AvatarWidget(
           type: AvatarType.TYPE2,
-          thumbPath:
-              'https://www.warrenphotographic.co.uk/photography/bigs/39665-Ginger-cat-on-orange-background.jpg',
+          thumbPath: AuthController.to.user.value.thumbnail!,
           size: 70,
         ),
         Positioned(

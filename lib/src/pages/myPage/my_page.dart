@@ -9,7 +9,7 @@ import 'package:flutter_clone_instagram/src/controller/mypage_controller.dart';
 import 'package:flutter_clone_instagram/src/pages/myPage/my_post_page.dart';
 import 'package:get/get.dart';
 
-import '../components/user_card.dart';
+import '../../components/user_card.dart';
 
 class MyPage extends GetView<MypageController> {
   const MyPage({Key? key}) : super(key: key);
@@ -262,7 +262,7 @@ class MyPage extends GetView<MypageController> {
             child: Padding(
               padding: const EdgeInsets.all(15.0),
               child: ImageData(
-                IconsPath.menuIcon,
+                IconsPath.closeImage,
                 width: 50,
               ),
             ),

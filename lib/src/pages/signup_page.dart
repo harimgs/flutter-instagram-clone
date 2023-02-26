@@ -44,7 +44,7 @@ class _SignupPageState extends State<SignupPage> {
             );
             update();
           },
-          child: const Text("이미지 변경"),
+          child: const Text("Change Image"),
         )
       ],
     );
@@ -57,7 +57,7 @@ class _SignupPageState extends State<SignupPage> {
         controller: nicknameController,
         decoration: const InputDecoration(
           contentPadding: EdgeInsets.all(10),
-          hintText: "닉네임",
+          hintText: "Nickname",
         ),
       ),
     );
@@ -70,7 +70,7 @@ class _SignupPageState extends State<SignupPage> {
         controller: descriptionController,
         decoration: const InputDecoration(
           contentPadding: EdgeInsets.all(10),
-          hintText: "설명",
+          hintText: "Description",
         ),
       ),
     );
@@ -84,7 +84,7 @@ class _SignupPageState extends State<SignupPage> {
         elevation: 0,
         centerTitle: true,
         title: const Text(
-          "회원가입",
+          "Sing Up",
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
         ),
       ),
@@ -113,7 +113,7 @@ class _SignupPageState extends State<SignupPage> {
               );
               AuthController.to.singup(signupUser, thumbnailXFile);
             },
-            child: const Text("회원가입"),
+            child: const Text("Sign Up"),
           )),
     );
   }
