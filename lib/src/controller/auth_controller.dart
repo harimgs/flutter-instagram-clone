@@ -1,16 +1,29 @@
 import 'dart:io';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_clone_instagram/src/binding/init_bindings.dart';
 import 'package:flutter_clone_instagram/src/model/instagram_user.dart';
 import 'package:flutter_clone_instagram/src/repository/user_repository.dart';
 import 'package:get/get.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:image_picker/image_picker.dart';
 
 class AuthController extends GetxController {
   static AuthController get to => Get.find();
 
   Rx<IUser> user = IUser().obs;
+
+  static Future<void> signOut({required BuildContext context}) async {
+    final GoogleSignIn googleSignIn = GoogleSignIn();
+    try {
+      await googleSignIn.signOut();
+      await FirebaseAuth.instance.signOut();
+    } catch (e) {
+      print(e);
+    }
+  }
 
   Future<IUser?> loginUser(String uid) async {
     //DB 조회

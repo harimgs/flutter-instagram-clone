@@ -17,24 +17,32 @@ class MyPostPage extends StatefulWidget {
 class _MyPostPageState extends State<MyPostPage> {
   final ScrollController _controller = ScrollController();
   final GlobalKey itemKey = GlobalKey();
-  double opacity = 0.0;
+  double opacity = 0;
 
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      final RenderBox itemRenderBox =
-          itemKey.currentContext!.findRenderObject() as RenderBox;
-      final appBarHeight = MediaQuery.of(context).padding.top + kToolbarHeight;
-      final position = itemRenderBox.localToGlobal(Offset(0, -appBarHeight));
-      _controller.animateTo(position.dy,
-          duration: const Duration(microseconds: 1), curve: Curves.easeIn);
-      _controller.addListener(() {
-        setState(() {
-          opacity = 1;
+    if (widget.currentIndex == 0) {
+      setState(() {
+        opacity = 1;
+      });
+    } else {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        final RenderBox itemRenderBox =
+            itemKey.currentContext!.findRenderObject() as RenderBox;
+        final appBarHeight =
+            MediaQuery.of(context).padding.top + kToolbarHeight;
+        final position = itemRenderBox.localToGlobal(Offset(0, -appBarHeight));
+        _controller.animateTo(position.dy,
+            duration: const Duration(microseconds: 1), curve: Curves.easeIn);
+        _controller.addListener(() {
+          setState(() {
+            opacity = 1;
+          });
         });
       });
-    });
+    }
+    ;
   }
 
   @override

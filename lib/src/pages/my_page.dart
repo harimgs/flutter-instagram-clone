@@ -4,6 +4,7 @@ import 'package:flutter_clone_instagram/src/components/avatar_widget.dart';
 import 'package:flutter_clone_instagram/src/components/image_data.dart';
 import 'package:flutter_clone_instagram/src/components/my_post_widget.dart';
 import 'package:flutter_clone_instagram/src/components/post_widget.dart';
+import 'package:flutter_clone_instagram/src/controller/auth_controller.dart';
 import 'package:flutter_clone_instagram/src/controller/mypage_controller.dart';
 import 'package:flutter_clone_instagram/src/pages/myPage/my_post_page.dart';
 import 'package:get/get.dart';
@@ -255,7 +256,9 @@ class MyPage extends GetView<MypageController> {
             ),
           ),
           GestureDetector(
-            onTap: () {},
+            onTap: () {
+              AuthController.signOut(context: context);
+            },
             child: Padding(
               padding: const EdgeInsets.all(15.0),
               child: ImageData(
