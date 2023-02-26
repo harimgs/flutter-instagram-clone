@@ -155,9 +155,9 @@ class MyPage extends GetView<MypageController> {
               10,
               (index) => UserCard(
                 userId: "kitty$index",
-                description: "dog$index님이 팔로우합니다.",
+                description: "Flowwed by dog$index",
               ),
-            ).toList(), // UserCard(유저객체)
+            ).toList(), // UserCard(user)
           ),
         ),
       ],

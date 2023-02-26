@@ -73,7 +73,7 @@ class App extends GetView<BottomNavContoller> {
               BottomNavigationBarItem(
                 icon: AvatarWidget(
                   type: AvatarType.TYPE2,
-                  size: 30,
+                  size: 28,
                   thumbPath: AuthController.to.user.value.thumbnail!,
                 ),
                 label: 'profile',

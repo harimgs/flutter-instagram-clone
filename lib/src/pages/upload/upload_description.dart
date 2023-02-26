@@ -31,7 +31,7 @@ class UploadDescription extends GetView<UploadController> {
                 disabledBorder: InputBorder.none,
                 focusedErrorBorder: InputBorder.none,
                 contentPadding: EdgeInsets.only(left: 15),
-                hintText: "문구 입력...",
+                hintText: "Write a Caption...",
               ),
             ),
           ),
@@ -111,7 +111,7 @@ class UploadDescription extends GetView<UploadController> {
             ),
           ),
           title: const Text(
-            "새 게시물",
+            "New Post",
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 20,
@@ -147,11 +147,11 @@ class UploadDescription extends GetView<UploadController> {
                     children: [
                       _description(),
                       line,
-                      _infoOnt("사람 태그하기"),
+                      _infoOnt("Tag people"),
                       line,
-                      _infoOnt("위치 추가"),
+                      _infoOnt("Add location"),
                       line,
-                      _infoOnt("다른 미디어에도 게시"),
+                      _infoOnt("Also post to"),
                       snsInfo(),
                     ],
                   ),

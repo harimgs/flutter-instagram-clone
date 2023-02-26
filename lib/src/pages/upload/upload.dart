@@ -12,7 +12,7 @@ class Upload extends GetView<UploadController> {
   // void update() => setState(() {});
 
   Widget _imagePreview() {
-    var width = Get.width; // Get.width / 화면의 width
+    var width = Get.width;
     return Obx(
       () => Container(
         width: width,
