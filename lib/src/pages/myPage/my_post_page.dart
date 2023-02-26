@@ -79,9 +79,7 @@ class _MyPostPageState extends State<MyPostPage> {
                 itemBuilder: (BuildContext context, int index) {
                   return PostWidget(
                     post: widget.post[index],
-                    key: index == widget.currentIndex
-                        ? itemKey
-                        : null, // Replace 50 with the desired index
+                    key: index == widget.currentIndex ? itemKey : null,
                   );
                 },
               ),

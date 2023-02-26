@@ -4,8 +4,8 @@ import 'package:flutter_clone_instagram/src/controller/auth_controller.dart';
 import 'package:flutter_clone_instagram/src/controller/bottom_nav_contoller.dart';
 import 'package:flutter_clone_instagram/src/pages/active_history.dart';
 import 'package:flutter_clone_instagram/src/pages/home.dart';
-import 'package:flutter_clone_instagram/src/pages/my_page.dart';
-import 'package:flutter_clone_instagram/src/pages/search.dart';
+import 'package:flutter_clone_instagram/src/pages/myPage/my_page.dart';
+import 'package:flutter_clone_instagram/src/pages/search/search.dart';
 import 'package:get/get.dart';
 
 import 'components/image_data.dart';

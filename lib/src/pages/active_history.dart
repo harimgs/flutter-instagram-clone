@@ -27,7 +27,7 @@ class ActiveHistory extends StatelessWidget {
                 ),
                 children: [
                   TextSpan(
-                    text: 'liked your post.',
+                    text: ' liked your post.',
                     style: TextStyle(
                       fontWeight: FontWeight.normal,
                     ),

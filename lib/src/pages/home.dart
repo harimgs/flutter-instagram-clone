@@ -10,29 +10,38 @@ class Home extends GetView<HomeController> {
   const Home({Key? key}) : super(key: key);
 
   Widget _myStory() {
-    return Stack(
+    return Column(
       children: [
-        AvatarWidget(
-          type: AvatarType.TYPE2,
-          thumbPath: AuthController.to.user.value.thumbnail!,
-          size: 70,
+        Stack(
+          children: [
+            AvatarWidget(
+              type: AvatarType.TYPE2,
+              thumbPath: AuthController.to.user.value.thumbnail!,
+              size: 70,
+            ),
+            Positioned(
+                right: 5,
+                bottom: 0,
+                child: Container(
+                  width: 20,
+                  height: 20,
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.blue,
+                      border: Border.all(color: Colors.white, width: 2)),
+                  child: const Center(
+                    child: Text("+",
+                        style: TextStyle(
+                            fontSize: 14, color: Colors.white, height: 1.2)),
+                  ),
+                ))
+          ],
         ),
-        Positioned(
-            right: 5,
-            bottom: 0,
-            child: Container(
-              width: 25,
-              height: 25,
-              decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.blue,
-                  border: Border.all(color: Colors.white, width: 2)),
-              child: const Center(
-                child: Text("+",
-                    style: TextStyle(
-                        fontSize: 20, color: Colors.white, height: 1.1)),
-              ),
-            ))
+        const SizedBox(height: 3),
+        const Text(
+          "Your story",
+          style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
+        ),
       ],
     );
   }
@@ -50,10 +59,20 @@ class Home extends GetView<HomeController> {
         ),
         ...List.generate(
             100,
-            (index) => AvatarWidget(
-                  thumbPath:
-                      'https://thumbnails.production.thenounproject.com/Be3jJLCiGLUhX-jrVaFa0hIvfd8=/fit-in/1000x1000/photos.production.thenounproject.com/photos/6DA7172D-BF23-4022-BFE1-50E704DB30F7.jpg',
-                  type: AvatarType.TYPE1,
+            (index) => Column(
+                  children: [
+                    AvatarWidget(
+                      thumbPath:
+                          'https://thumbnails.production.thenounproject.com/Be3jJLCiGLUhX-jrVaFa0hIvfd8=/fit-in/1000x1000/photos.production.thenounproject.com/photos/6DA7172D-BF23-4022-BFE1-50E704DB30F7.jpg',
+                      type: AvatarType.TYPE1,
+                    ),
+                    const SizedBox(height: 3),
+                    const Text(
+                      "kitty",
+                      style:
+                          TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
+                    ),
+                  ],
                 ))
       ]),
     );
@@ -96,6 +115,7 @@ class Home extends GetView<HomeController> {
         displacement: 0,
         child: ListView(
           children: [
+            const SizedBox(height: 3),
             _storyBoardList(),
             _postList(),
           ],

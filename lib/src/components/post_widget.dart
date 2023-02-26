@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_clone_instagram/src/components/avatar_widget.dart';
 import 'package:flutter_clone_instagram/src/components/image_data.dart';
 import 'package:flutter_clone_instagram/src/model/post.dart';
+import 'package:get/get.dart';
 
 import 'package:timeago/timeago.dart' as timeago;
 
@@ -36,7 +37,13 @@ class PostWidget extends StatelessWidget {
   }
 
   Widget _image() {
-    return CachedNetworkImage(imageUrl: post.thumbnail!);
+    return SizedBox(
+      height: Get.width,
+      child: CachedNetworkImage(
+        imageUrl: post.thumbnail!,
+        fit: BoxFit.fitWidth,
+      ),
+    );
   }
 
   Widget _infoCount() {
@@ -107,7 +114,7 @@ class PostWidget extends StatelessWidget {
       child: const Padding(
         padding: EdgeInsets.symmetric(horizontal: 15.0),
         child: Text(
-          'View all 199개 comments',
+          'View all 199 comments',
           style: TextStyle(fontSize: 13),
         ),
       ),
