@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_clone_instagram/src/components/avatar_widget.dart';
 import 'package:flutter_clone_instagram/src/components/image_data.dart';
 import 'package:flutter_clone_instagram/src/components/my_post_widget.dart';
+import 'package:flutter_clone_instagram/src/components/post_widget.dart';
 import 'package:flutter_clone_instagram/src/controller/mypage_controller.dart';
+import 'package:flutter_clone_instagram/src/pages/myPage/my_post_page.dart';
 import 'package:get/get.dart';
 
 import '../components/user_card.dart';
@@ -192,7 +194,38 @@ class MyPage extends GetView<MypageController> {
             crossAxisSpacing: 1,
           ),
           itemBuilder: (BuildContext context, int index) {
-            return MyPostWidget(post: controller.myPostList[index]);
+            return GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  PageRouteBuilder(
+                    transitionDuration: const Duration(milliseconds: 250),
+                    reverseTransitionDuration:
+                        const Duration(milliseconds: 150),
+                    pageBuilder: (context, animation, secondaryAnimation) =>
+                        MyPostPage(
+                      post: controller.myPostList,
+                      currentIndex: index,
+                    ),
+                    transitionsBuilder:
+                        (context, animation, secondaryAnimation, child) {
+                      const begin = Offset(1.0, 0.0);
+                      const end = Offset.zero;
+                      const curve = Curves.ease;
+
+                      var tween = Tween(begin: begin, end: end)
+                          .chain(CurveTween(curve: curve));
+
+                      return SlideTransition(
+                        position: animation.drive(tween),
+                        child: child,
+                      );
+                    },
+                  ),
+                );
+              },
+              child: MyPostWidget(post: controller.myPostList[index]),
+            );
           }),
     );
   }

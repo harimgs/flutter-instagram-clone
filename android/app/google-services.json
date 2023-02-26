@@ -14,8 +14,12 @@
       },
       "oauth_client": [
         {
-          "client_id": "836170660155-tbqkrhogb4lmr31m2tuevd55sid0aeq8.apps.googleusercontent.com",
-          "client_type": 3
+          "client_id": "836170660155-bopssoejfbmese36eldls87ju19lkm6t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.flutter_clone_instagram",
+            "certificate_hash": "c6c3564f554065483e676f9b32160f89da40b998"
+          }
         }
       ],
       "api_key": [
@@ -29,6 +33,13 @@
             {
               "client_id": "836170660155-tbqkrhogb4lmr31m2tuevd55sid0aeq8.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "836170660155-ivffdrujeiikca4qdou7mcd7224enbbl.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.flutterCloneInstagram"
+              }
             }
           ]
         }

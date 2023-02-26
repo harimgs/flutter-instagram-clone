@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_clone_instagram/src/components/avatar_widget.dart';
+import 'package:flutter_clone_instagram/src/controller/auth_controller.dart';
 import 'package:flutter_clone_instagram/src/controller/bottom_nav_contoller.dart';
 import 'package:flutter_clone_instagram/src/pages/active_history.dart';
 import 'package:flutter_clone_instagram/src/pages/home.dart';
@@ -31,7 +33,14 @@ class App extends GetView<BottomNavContoller> {
               ),
               Container(),
               const ActiveHistory(),
-              const MyPage(),
+              Navigator(
+                key: controller.myPageNavigationKey,
+                onGenerateRoute: (routeSettings) {
+                  return MaterialPageRoute(
+                    builder: (context) => const MyPage(),
+                  );
+                },
+              ),
             ],
           ),
           bottomNavigationBar: BottomNavigationBar(
@@ -62,11 +71,10 @@ class App extends GetView<BottomNavContoller> {
                 label: 'active',
               ),
               BottomNavigationBarItem(
-                icon: Container(
-                  width: 30,
-                  height: 30,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.circle, color: Colors.grey),
+                icon: AvatarWidget(
+                  type: AvatarType.TYPE2,
+                  size: 30,
+                  thumbPath: AuthController.to.user.value.thumbnail!,
                 ),
                 label: 'profile',
               ),

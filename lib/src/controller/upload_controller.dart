@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_clone_instagram/src/components/message_popup.dart';
 import 'package:flutter_clone_instagram/src/controller/auth_controller.dart';
 import 'package:flutter_clone_instagram/src/controller/home_contoller.dart';
+import 'package:flutter_clone_instagram/src/controller/mypage_controller.dart';
 import 'package:flutter_clone_instagram/src/model/post.dart';
 import 'package:flutter_clone_instagram/src/pages/upload/upload_description.dart';
 import 'package:flutter_clone_instagram/src/repository/post_repository.dart';
@@ -34,6 +35,13 @@ class UploadController extends GetxController {
     super.onInit();
     post = Post.init(AuthController.to.user.value);
     _loadPhotos();
+  }
+
+  @override
+  void onClose() async {
+    super.onClose();
+    Get.put(HomeController()).loadFeedList();
+    Get.put(MypageController()).loadMyPost();
   }
 
   void _loadPhotos() async {
@@ -139,7 +147,6 @@ class UploadController extends GetxController {
 
   void _submitPost(Post postData) async {
     await PostRepository.updatePost(postData);
-    var feedList = await PostRepository.loadFeedList();
 
     showDialog(
       context: Get.context!,
@@ -148,8 +155,6 @@ class UploadController extends GetxController {
         message: '포스팅이 완료 되었습니다.',
         okCallback: () {
           Get.until((route) => Get.currentRoute == '/');
-          Get.put(HomeController()).postList.clear();
-          Get.put(HomeController()).postList.addAll(feedList);
         },
       ),
     );

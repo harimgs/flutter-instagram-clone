@@ -20,4 +20,8 @@ class HomeController extends GetxController {
   Future<void> requestNew() async {
     loadFeedList();
   }
+
+  void requestList() {
+    loadFeedList();
+  }
 }

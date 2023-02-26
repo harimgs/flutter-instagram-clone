@@ -28,16 +28,15 @@ class MypageController extends GetxController with GetTickerProviderStateMixin {
     }
   }
 
-  void setMyPost() async {
-    var myFeedList = await PostRepository.loadFeedList();
+  void loadMyPost() async {
+    myPostList.clear();
+    var myFeedList = await PostRepository.loadMyPost();
     myPostList.addAll(myFeedList);
   }
 
   void _loadData() {
     setTargetUser();
-    setMyPost();
-
-    // 포스트 리스트 로드
+    loadMyPost();
     // 사용자 정보 로드
   }
 }

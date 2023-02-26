@@ -13,6 +13,7 @@ class BottomNavContoller extends GetxController {
   RxInt pageIndex = 0.obs;
   GlobalKey<NavigatorState> searchPageNavigationKey =
       GlobalKey<NavigatorState>();
+  GlobalKey<NavigatorState> myPageNavigationKey = GlobalKey<NavigatorState>();
   List<int> bottomHistory = [0];
 
   void changeBottomNav(int value, {bool hasGesture = true}) {
@@ -60,6 +61,9 @@ class BottomNavContoller extends GetxController {
       var page = PageName.values[bottomHistory.last];
       if (page == PageName.SEARCH) {
         var value = await searchPageNavigationKey.currentState!.maybePop();
+        if (value) return false;
+      } else if (page == PageName.MYPAGE) {
+        var value = await myPageNavigationKey.currentState!.maybePop();
         if (value) return false;
       }
 
